@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess: College Student or Homeless?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="game">
+        <h1>College Student or Homeless?</h1>
+        <div id="score">Score: 0</div>
+        <div id="spinner" style="display:none;">🌀 Generating image...</div>
+        <img id="image" src="" alt="Loading..." width="300" height="300">
+        <div id="buttons">
+            <button onclick="makeGuess('college')">College Student</button>
+            <button onclick="makeGuess('homeless')">Homeless Person</button>
+        </div>
+        <div id="game-over" style="display:none;">
+            <button onclick="restartGame()">Play Again</button>
+        </div>          
+        <div id="result"></div>
+    </div>
+</body>
+</html>
