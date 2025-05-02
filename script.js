@@ -22,8 +22,11 @@ async function generateImage(promptText) {
 
 async function loadNextImage() {
     if (roundsPlayed >= 5) {
-        document.getElementById('game').innerHTML = `<h1>Game Over!</h1><p>Your final score is ${score}/5 (${Math.round((score / 5) * 100)}%)</p>`;
-        document.getElementById('game-over').style.display = "block";
+        document.getElementById('game').innerHTML = `
+            <h1>🎉 Game Over!</h1>
+            <p>Your final score is ${score}/5 (${Math.round((score / 5) * 100)}%)</p>
+            <button onclick="restartGame()">🔁 Play Again</button>
+        `;
         return;
     }
 
@@ -101,24 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
 function restartGame() {
     score = 0;
     roundsPlayed = 0;
     currentIndex = 0;
-    document.getElementById('score').innerText = "Score: 0";
-    document.getElementById('game-over').style.display = "none";
+
     document.getElementById('game').innerHTML = `
-      <h1>College Student or Homeless?</h1>
-      <div id="score">Score: 0</div>
-      <div id="spinner" style="display:none;">🌀 Generating image...</div>
-      <img id="image" src="" alt="Loading..." width="300" height="300">
-      <div id="buttons">
-        <button onclick="makeGuess('college')">College Student</button>
-        <button onclick="makeGuess('homeless')">Homeless Person</button>
-      </div>
-      <div id="result"></div>
+        <h1>College Student or Homeless?</h1>
+        <div id="score">Score: 0</div>
+        <div id="progress">Image 1 of 5</div>
+        <div id="image-container">
+            <div id="spinner" style="display:none;">
+                <div class="loader"></div>
+                <p>Generating image...</p>
+            </div>
+            <img id="image" src="" alt="Loading..." width="300" height="300">
+        </div>
+        <div id="buttons">
+            <button onclick="makeGuess('college')">College Student</button>
+            <button onclick="makeGuess('homeless')">Homeless Person</button>
+        </div>
+        <div id="result"></div>
     `;
+
     loadNextImage();
 }
 
