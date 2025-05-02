@@ -14,3 +14,15 @@ body {
     padding: 10px 20px;
     font-size: 18px;
 }
+
+#image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+}
+
+#image {
+    margin: 0 auto;
+    border: 2px solid black;
+}

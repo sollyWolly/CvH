@@ -11,7 +11,9 @@
         <h1>College Student or Homeless?</h1>
         <div id="score">Score: 0</div>
         <div id="spinner" style="display:none;">🌀 Generating image...</div>
-        <img id="image" src="" alt="Loading..." width="300" height="300">
+        <div id="image-container">
+            <img id="image" src="" alt="Loading..." width="300" height="300">
+        </div>        
         <div id="buttons">
             <button onclick="makeGuess('college')">College Student</button>
             <button onclick="makeGuess('homeless')">Homeless Person</button>
