@@ -78,6 +78,17 @@ function makeGuess(guess) {
     }, 1500);
 }
 
+// Dark mode toggle logic
+document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('darkModeToggle');
+    const label = document.getElementById('mode-label');
+
+    toggle.addEventListener('change', () => {
+        document.body.classList.toggle('dark');
+        label.textContent = toggle.checked ? 'Dark' : 'Light';
+    });
+});
+
 function restartGame() {
     score = 0;
     roundsPlayed = 0;
