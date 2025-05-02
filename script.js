@@ -37,8 +37,11 @@ async function loadNextImage() {
         var prompt = "photo portrait of a young homeless man, who looks like a college student, realistic";
     }
 
-    document.getElementById('spinner').style.display = "block"; // 👈 show spinner
-    document.getElementById('image').style.display = "none";    // 👈 hide image
+    document.getElementById('spinner').style.display = "block";
+    document.getElementById('image').style.display = "none";
+
+    // Disable buttons during load
+    document.querySelectorAll('#buttons button').forEach(btn => btn.disabled = true);
 
     try {
         const imageUrl = await generateImage(prompt);
@@ -49,12 +52,18 @@ async function loadNextImage() {
         document.getElementById('result').innerText = "Failed to load image.";
     }
 
-    document.getElementById('spinner').style.display = "none";  // 👈 hide spinner
-    document.getElementById('image').style.display = "block";   // 👈 show image
+    document.getElementById('spinner').style.display = "none";
+    document.getElementById('image').style.display = "block";
+    
+    // Re-enable buttons after image loads
+    document.querySelectorAll('#buttons button').forEach(btn => btn.disabled = false);    
 
 }
 
 function makeGuess(guess) {
+    // Disable buttons immediately after a guess
+    document.querySelectorAll('#buttons button').forEach(btn => btn.disabled = true);
+
     if (guess === correctAnswer) {
         score++;
         document.getElementById('result').innerText = "✅ Correct!";
