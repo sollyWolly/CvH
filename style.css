@@ -140,3 +140,9 @@ body.dark .loader {
     left: 50px;
 }
 
+#progress {
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+

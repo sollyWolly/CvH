@@ -28,6 +28,7 @@ async function loadNextImage() {
     }
 
     roundsPlayed++;
+    document.getElementById('progress').innerText = `Image ${roundsPlayed} of 5`;
 
     if (Math.random() < 0.5) {
         correctAnswer = 'college';
@@ -83,11 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('darkModeToggle');
     const label = document.getElementById('mode-label');
 
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+        toggle.checked = true;
+        label.textContent = '🌙 Dark';
+    }
+
+    // Handle toggle change
     toggle.addEventListener('change', () => {
-        document.body.classList.toggle('dark');
-        label.textContent = toggle.checked ? 'Dark' : 'Light';
+        const isDark = toggle.checked;
+        document.body.classList.toggle('dark', isDark);
+        label.textContent = isDark ? '🌙 Dark' : '🌞 Light';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
+
 
 function restartGame() {
     score = 0;
