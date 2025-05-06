@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggle.addEventListener('change', () => {
         const isDark = toggle.checked;
         document.body.classList.toggle('dark', isDark);
-        label.textContent = isDark ? '🌙 Dark' : '🌞 Light';
+        label.textContent = isDark ? 'Dark' : 'Light';
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
